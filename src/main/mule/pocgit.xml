@@ -5,11 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b5a53438-9a6d-4f1f-9cd7-5d011f661c27" >
-		<http:listener-connection host="localhost" port="8087" />
+		<http:listener-connection host="0.0.0.0" port="8081" usePersistentConnections="false" />
 	</http:listener-config>
 	<flow name="pocgitFlow" doc:id="82b32739-645c-49e2-88e9-fbd26de6c3f4" >
-		<http:listener doc:name="Listener" doc:id="31b60674-f79d-436c-a04b-467ea1fa7ca8" config-ref="HTTP_Listener_config" path="git"/>
+		<http:listener doc:name="Listener" doc:id="31b60674-f79d-436c-a04b-467ea1fa7ca8" config-ref="HTTP_Listener_config" path="/" allowedMethods="POST" outputMimeType="application/json"/>
 		<logger level="INFO" doc:name="Logger" doc:id="4bf18b84-e264-4416-b46b-82e00f526d33" message="in git flow #[payload]"/>
-		<set-payload value="Success git connection" doc:name="Set Payload" doc:id="6f5e79a2-b2fb-4111-92aa-86208b3f1c51" />
+		<set-payload value='{   "status": "Success" }' doc:name="Set Payload" doc:id="6f5e79a2-b2fb-4111-92aa-86208b3f1c51" mimeType="application/json"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4b504c1e-c305-4060-ae82-8fa54aae9cd4" message="#[payload]"/>
 	</flow>
 </mule>
