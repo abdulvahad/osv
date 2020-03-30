@@ -29,10 +29,10 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				  <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin-version}</version>
-
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>3.1.6</version>
+				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com/</uri>
@@ -42,14 +42,14 @@
 						<workerType>Micro</workerType>
 						<workers>1</workers>
 						<applicationName>pocgit</applicationName>
-						<environment>Sandbox</environment>						
+						<environment>Sandbox</environment>
 					</cloudHubDeployment>
 					<executions>
-					  <id>deploy</id>
-					  <phase>deploy</phase>
-					  <goals>
-					    <goal>deploy</goal>
-					  </goals>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
 					</executions>
 				</configuration>
 			</plugin>
